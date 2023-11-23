@@ -27,7 +27,5 @@ jobs:
         with:
            name: Depcheck report
            path: ${{github.workspace}}/reports
-      - id: build
-        run: sleep $((RANDOM % 30)) && exit ${{ matrix.code }}
        
           
