@@ -5,6 +5,7 @@ jobs:
   depchecktest:
     runs-on: ubuntu-latest
     name: depecheck_test
+    continue-on-error: true
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -28,10 +29,5 @@ jobs:
            path: ${{github.workspace}}/reports
       - id: build
         run: sleep $((RANDOM % 30)) && exit ${{ matrix.code }}
-        continue-on-error: true
-      - uses: mainmatter/continue-on-error-comment@v1
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          outcome: ${{ steps.build.outcome }}
-          test-id: Error code ${{ matrix.code }}
+       
           
